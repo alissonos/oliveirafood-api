@@ -1,5 +1,7 @@
 insert into cozinha (nome) values ('Tailandesa');
 
+insert into cozinha (nome) values ('Japonesa');
+
 insert into forma_de_pagamento (descricao) values ('pix')
 
 insert into restaurante (nome, taxa_frete, cozinha_id) values ('Madero', 6, 1);
