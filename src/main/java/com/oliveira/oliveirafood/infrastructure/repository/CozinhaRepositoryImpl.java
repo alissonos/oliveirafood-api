@@ -3,7 +3,7 @@ package com.oliveira.oliveirafood.infrastructure.repository;
 import java.util.List;
 
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import com.oliveira.oliveirafood.domain.model.Cozinha;
 import com.oliveira.oliveirafood.domain.repository.CozinhaRepository;
@@ -12,7 +12,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 
-@Component
+@Repository
 public class CozinhaRepositoryImpl implements CozinhaRepository{
 
 	@PersistenceContext
@@ -21,6 +21,13 @@ public class CozinhaRepositoryImpl implements CozinhaRepository{
 	@Override
 	public List<Cozinha> listar() {
 		return manager.createQuery("from Cozinha", Cozinha.class).getResultList();
+	}
+	
+	@Override
+	public List<Cozinha> consultarPorNome(String nomeCozinha) {
+		return manager.createQuery("from Cozinha where nome like :nome", Cozinha.class)
+				.setParameter("nome", "%" + nomeCozinha + "%")
+				.getResultList();
 	}
 	
 	@Override
