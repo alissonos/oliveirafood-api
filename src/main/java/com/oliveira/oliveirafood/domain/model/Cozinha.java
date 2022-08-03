@@ -11,18 +11,17 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @JsonRootName("cozinha")
-@Entity
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Entity
 public class Cozinha {
-	
+
+	@EqualsAndHashCode.Include
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@EqualsAndHashCode.Include
 	private Long id;
 	
-//	@JsonIgnore
-//	@JsonProperty("titulo")
 	@Column(nullable = false)
 	private String nome;
+	
 }
