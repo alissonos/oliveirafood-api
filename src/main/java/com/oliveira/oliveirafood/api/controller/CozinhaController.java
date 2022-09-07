@@ -17,8 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.oliveira.oliveirafood.domain.exception.EntidadeEmUsoException;
-import com.oliveira.oliveirafood.domain.exception.EntidadeNaoEncontradaException;
 import com.oliveira.oliveirafood.domain.model.Cozinha;
 import com.oliveira.oliveirafood.domain.repository.CozinhaRepository;
 import com.oliveira.oliveirafood.domain.service.CadastroCozinhaService;
