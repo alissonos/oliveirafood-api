@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.oliveira.oliveirafood.domain.exception.CozinhaNaoEncontradaException;
-import com.oliveira.oliveirafood.domain.exception.EntidadeNaoEncontradaException;
 import com.oliveira.oliveirafood.domain.exception.NegocioException;
 import com.oliveira.oliveirafood.domain.model.Restaurante;
 import com.oliveira.oliveirafood.domain.repository.RestauranteRepository;
