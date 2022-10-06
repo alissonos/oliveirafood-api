@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.oliveira.oliveirafood.OliveirafoodApiApplicationTests
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.54 s - in com.oliveira.oliveirafood.OliveirafoodApiApplicationTests
