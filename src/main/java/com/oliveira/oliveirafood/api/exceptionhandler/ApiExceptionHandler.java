@@ -1,6 +1,7 @@
 package com.oliveira.oliveirafood.api.exceptionhandler;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.exception.ExceptionUtils;
@@ -174,6 +175,20 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 		Problem problem = createProblemBuilder(status, problemType, detail).build();
 		
 		return handleExceptionInternal(ex, problem, headers, status, request);
+	}
+	
+	public ResponseEntity<Object> handleUncaught(Exception ex, WebRequest request) {
+		HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
+		ProblemType problemType = ProblemType.ERRO_DE_SISTEMA;
+		String detail = "Ocorreu um erro interno inesperado no sistema. "
+	            + "Tente novamente e se o problema persistir, entre em contato "
+	            + "com o administrador do sistema.";
+		
+		ex.printStackTrace();
+		
+		Problem problem = createProblemBuilder(status, problemType, detail).build();
+		
+		return handleExceptionInternal(ex, problem, null, status, request);
 	}
 }
 
