@@ -27,6 +27,7 @@ public class Problem {
 	public static class Field {
 		private String name;
 		private String userMessage;
+		private String qualquer;
 	}
 
 }
