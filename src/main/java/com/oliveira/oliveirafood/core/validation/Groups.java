@@ -1,4 +1,4 @@
-package com.oliveira.oliveirafood;
+package com.oliveira.oliveirafood.core.validation;
 
 public interface Groups {
 	
