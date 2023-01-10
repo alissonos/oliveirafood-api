@@ -20,6 +20,7 @@ import com.oliveira.oliveirafood.api.assembler.RestauranteInputDisassembler;
 import com.oliveira.oliveirafood.api.assembler.RestauranteModelAssembler;
 import com.oliveira.oliveirafood.api.model.RestauranteModel;
 import com.oliveira.oliveirafood.api.model.input.RestauranteInput;
+import com.oliveira.oliveirafood.domain.exception.CidadeNaoEncontradaException;
 import com.oliveira.oliveirafood.domain.exception.CozinhaNaoEncontradaException;
 import com.oliveira.oliveirafood.domain.exception.NegocioException;
 import com.oliveira.oliveirafood.domain.model.Restaurante;
@@ -60,7 +61,7 @@ public class RestauranteController {
 		try {
 			Restaurante restaurante = restauranteInputDisassembler.toDomainObject(restauranteInput);
 			return restauranteModelAssembler.toModel(cadastroRestaurante.salvar(restaurante));
-		} catch (CozinhaNaoEncontradaException e) {
+		} catch (CozinhaNaoEncontradaException | CidadeNaoEncontradaException e) {
 			throw new NegocioException(e.getMessage());
 		}
 	}
@@ -75,7 +76,7 @@ public class RestauranteController {
 			restauranteInputDisassembler.copyToDomainObject(restauranteInput, restauranteAtual);
 			
 			return restauranteModelAssembler.toModel(cadastroRestaurante.salvar(restauranteAtual));
-		} catch (CozinhaNaoEncontradaException e) {
+		} catch (CozinhaNaoEncontradaException | CidadeNaoEncontradaException e) {
 			throw new NegocioException(e.getMessage());
 		}
 	}
