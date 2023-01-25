@@ -9,6 +9,7 @@ import com.oliveira.oliveirafood.domain.model.Cidade;
 import com.oliveira.oliveirafood.domain.model.Cozinha;
 import com.oliveira.oliveirafood.domain.model.FormaPagamento;
 import com.oliveira.oliveirafood.domain.model.Restaurante;
+import com.oliveira.oliveirafood.domain.model.Usuario;
 import com.oliveira.oliveirafood.domain.repository.RestauranteRepository;
 
 @Service
@@ -25,6 +26,9 @@ public class CadastroRestauranteService {
 	
 	@Autowired
 	private CadastroFormaPagamentoService cadastroFormaPagamentoService;
+	
+	@Autowired
+	private CadastroUsuarioService cadastroUsuarioService;
 	
 	@Transactional
 	public Restaurante salvar(Restaurante restaurante) {
@@ -89,6 +93,22 @@ public class CadastroRestauranteService {
 	public Restaurante buscarOuFalhar(Long restauranteId) {
 	    return restauranteRepository.findById(restauranteId)
 	        .orElseThrow(() -> new RestauranteNaoEncontradoException(restauranteId));
+	}
+	
+	@Transactional
+	public void desassociarResponsavel(Long restauranteId, Long usuarioId) {
+	    Restaurante restaurante = buscarOuFalhar(restauranteId);
+	    Usuario usuario = cadastroUsuarioService.buscarOuFalhar(usuarioId);
+	    
+	    restaurante.removerResponsavel(usuario);
+	}
+
+	@Transactional
+	public void associarResponsavel(Long restauranteId, Long usuarioId) {
+	    Restaurante restaurante = buscarOuFalhar(restauranteId);
+	    Usuario usuario = cadastroUsuarioService.buscarOuFalhar(usuarioId);
+	    
+	    restaurante.adicionarResponsavel(usuario);
 	}
 	
 }
