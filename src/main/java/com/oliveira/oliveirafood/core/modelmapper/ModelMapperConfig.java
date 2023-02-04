@@ -5,13 +5,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.oliveira.oliveirafood.api.model.EnderecoModel;
+import com.oliveira.oliveirafood.api.model.input.ItemPedidoInput;
 import com.oliveira.oliveirafood.domain.model.Endereco;
-
-import lombok.experimental.var;
+import com.oliveira.oliveirafood.domain.model.ItemPedido;
 
 @Configuration
 public class ModelMapperConfig {
-	
+
 	@Bean
 	public ModelMapper modelMapper() {
 		var modelMapper = new ModelMapper();
@@ -19,13 +19,17 @@ public class ModelMapperConfig {
 //		modelMapper.createTypeMap(Restaurante.class, RestauranteModel.class)
 //			.addMapping(Restaurante::getTaxaFrete, RestauranteModel::setPrecoFrete);
 		
-		var enderecoToEnderecoModelTypeMap = modelMapper.createTypeMap
-				(Endereco.class, EnderecoModel.class);
+		modelMapper.createTypeMap(ItemPedidoInput.class, ItemPedido.class)
+			.addMappings(mapper -> mapper.skip(ItemPedido::setId));
+		
+		var enderecoToEnderecoModelTypeMap = modelMapper.createTypeMap(
+				Endereco.class, EnderecoModel.class);
 		
 		enderecoToEnderecoModelTypeMap.<String>addMapping(
 				enderecoSrc -> enderecoSrc.getCidade().getEstado().getNome(),
-				(endereoModelDest, value) -> endereoModelDest.getCidade().setEstado(value));
+				(enderecoModelDest, value) -> enderecoModelDest.getCidade().setEstado(value));
 		
 		return modelMapper;
 	}
+	
 }
