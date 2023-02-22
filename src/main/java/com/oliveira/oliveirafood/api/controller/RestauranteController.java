@@ -93,6 +93,13 @@ public class RestauranteController {
 //		return listar();
 //	}
 	
+	@GetMapping("/{restauranteId}")
+	public RestauranteModel buscar(@PathVariable Long restauranteId) {
+		Restaurante restaurante = cadastroRestauranteService.buscarOuFalhar(restauranteId);
+		
+		return restauranteModelAssembler.toModel(restaurante);
+	}
+	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public RestauranteModel adicionar(@RequestBody @Valid RestauranteInput restauranteInput) {
