@@ -26,12 +26,13 @@ public class FluxoPedidoController {
 	@PutMapping("/cancelamento")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void cancelar(@PathVariable String codigoPedido) {
-	    fluxoPedido.cancelar(codigoPedido);
+		fluxoPedido.cancelar(codigoPedido);
 	}
-
+	
 	@PutMapping("/entrega")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void entregar(@PathVariable String codigoPedido) {
-	    fluxoPedido.entregar(codigoPedido);
+		fluxoPedido.entregar(codigoPedido);
 	}
+	
 }

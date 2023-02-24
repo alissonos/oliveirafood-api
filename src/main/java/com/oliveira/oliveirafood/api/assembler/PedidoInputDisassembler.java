@@ -10,14 +10,15 @@ import com.oliveira.oliveirafood.domain.model.Pedido;
 @Component
 public class PedidoInputDisassembler {
 
-    @Autowired
-    private ModelMapper modelMapper;
-    
-    public Pedido toDomainObject(PedidoInput pedidoInput) {
-        return modelMapper.map(pedidoInput, Pedido.class);
-    }
-    
-    public void copyToDomainObject(PedidoInput pedidoInput, Pedido pedido) {
-        modelMapper.map(pedidoInput, pedido);
-    }            
+	@Autowired
+	private ModelMapper modelMapper;
+	
+	public Pedido toDomainObject(PedidoInput pedidoInput) {
+		return modelMapper.map(pedidoInput, Pedido.class);
+	}
+	
+	public void copyToDomainObject(PedidoInput pedidoInput, Pedido pedido) {
+		modelMapper.map(pedidoInput, pedido);
+	}
+	
 }

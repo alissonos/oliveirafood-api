@@ -11,11 +11,11 @@ import lombok.Setter;
 @Getter
 public class CidadeInput {
 
-    @NotBlank
-    private String nome;
-    
-    @Valid
-    @NotNull
-    private EstadoIdInput estado;
-    
+	@NotBlank
+	private String nome;
+	
+	@Valid
+	@NotNull
+	private EstadoIdInput estado;
+	
 }

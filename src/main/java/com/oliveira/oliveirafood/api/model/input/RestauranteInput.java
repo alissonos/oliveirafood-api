@@ -13,7 +13,7 @@ import lombok.Setter;
 @Setter
 @Getter
 public class RestauranteInput {
-	
+
 	@NotBlank
 	private String nome;
 	
@@ -28,4 +28,5 @@ public class RestauranteInput {
 	@Valid
 	@NotNull
 	private EnderecoInput endereco;
+	
 }

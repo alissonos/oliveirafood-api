@@ -9,6 +9,7 @@ import lombok.Setter;
 @Getter
 public class RestauranteIdInput {
 
-    @NotNull
-    private Long id;   
+	@NotNull
+	private Long id;
+	
 }

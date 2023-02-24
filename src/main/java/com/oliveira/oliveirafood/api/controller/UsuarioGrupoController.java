@@ -21,28 +21,29 @@ import com.oliveira.oliveirafood.domain.service.CadastroUsuarioService;
 @RequestMapping(value = "/usuarios/{usuarioId}/grupos")
 public class UsuarioGrupoController {
 
-    @Autowired
-    private CadastroUsuarioService cadastroUsuarioService;
-    
-    @Autowired
-    private GrupoModelAssembler grupoModelAssembler;
-    
-    @GetMapping
-    public List<GrupoModel> listar(@PathVariable Long usuarioId) {
-        Usuario usuario = cadastroUsuarioService.buscarOuFalhar(usuarioId);
-        
-        return grupoModelAssembler.toCollectionModel(usuario.getGrupos());
-    }
-    
-    @DeleteMapping("/{grupoId}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void desassociar(@PathVariable Long usuarioId, @PathVariable Long grupoId) {
-    	cadastroUsuarioService.desassociarGrupo(usuarioId, grupoId);
-    }
-    
-    @PutMapping("/{grupoId}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void associar(@PathVariable Long usuarioId, @PathVariable Long grupoId) {
-    	cadastroUsuarioService.associarGrupo(usuarioId, grupoId);
-    }        
-}      
+	@Autowired
+	private CadastroUsuarioService cadastroUsuario;
+	
+	@Autowired
+	private GrupoModelAssembler grupoModelAssembler;
+	
+	@GetMapping
+	public List<GrupoModel> listar(@PathVariable Long usuarioId) {
+		Usuario usuario = cadastroUsuario.buscarOuFalhar(usuarioId);
+		
+		return grupoModelAssembler.toCollectionModel(usuario.getGrupos());
+	}
+	
+	@DeleteMapping("/{grupoId}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void desassociar(@PathVariable Long usuarioId, @PathVariable Long grupoId) {
+		cadastroUsuario.desassociarGrupo(usuarioId, grupoId);
+	}
+	
+	@PutMapping("/{grupoId}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void associar(@PathVariable Long usuarioId, @PathVariable Long grupoId) {
+		cadastroUsuario.associarGrupo(usuarioId, grupoId);
+	}
+
+}  

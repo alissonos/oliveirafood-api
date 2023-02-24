@@ -7,10 +7,10 @@ import javax.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
 @Setter
+@Getter
 public class EnderecoInput {
-	
+
 	@NotBlank
 	private String cep;
 	
@@ -28,4 +28,5 @@ public class EnderecoInput {
 	@Valid
 	@NotNull
 	private CidadeIdInput cidade;
+	
 }

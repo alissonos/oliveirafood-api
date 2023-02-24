@@ -16,9 +16,9 @@ import javax.validation.Payload;
 
 @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })
 @Retention(RUNTIME)
-@Constraint(validatedBy = { MultiploValidator.class})
+@Constraint(validatedBy = { MultiploValidator.class })
 public @interface Multiplo {
-	
+
 	String message() default "múltiplo inválido";
 
 	Class<?>[] groups() default { };
@@ -26,4 +26,5 @@ public @interface Multiplo {
 	Class<? extends Payload>[] payload() default { };
 	
 	int numero();
+	
 }

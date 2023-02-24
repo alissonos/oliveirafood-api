@@ -20,7 +20,7 @@ import org.springframework.util.StringUtils;
 import com.oliveira.oliveirafood.domain.model.Restaurante;
 import com.oliveira.oliveirafood.domain.repository.RestauranteRepository;
 import com.oliveira.oliveirafood.domain.repository.RestauranteRepositoryQueries;
-import com.oliveira.oliveirafood.infraestructure.repository.spec.RestauranteSpec;
+import com.oliveira.oliveirafood.infraestructure.repository.spec.RestauranteSpecs;
 
 
 @Repository
@@ -64,7 +64,7 @@ public class RestauranteRepositoryImpl implements RestauranteRepositoryQueries {
 
 	@Override
 	public List<Restaurante> findComFreteGratis(String nome) {
-		return restauranteRepository.findAll(RestauranteSpec.comFreteGratis()
-				.and(RestauranteSpec.comNomeSemelhante(nome)));
+		return restauranteRepository.findAll(RestauranteSpecs.comFreteGratis()
+				.and(RestauranteSpecs.comNomeSemelhante(nome)));
 	}
 }

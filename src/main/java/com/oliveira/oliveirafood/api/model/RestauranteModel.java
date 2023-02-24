@@ -8,10 +8,10 @@ import com.oliveira.oliveirafood.api.model.view.RestauranteView;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
 @Setter
+@Getter
 public class RestauranteModel {
-	
+
 	@JsonView({ RestauranteView.Resumo.class, RestauranteView.ApenasNome.class })
 	private Long id;
 	
@@ -19,7 +19,7 @@ public class RestauranteModel {
 	private String nome;
 	
 	@JsonView(RestauranteView.Resumo.class)
-	private BigDecimal precoFrete;
+	private BigDecimal taxaFrete;
 	
 	@JsonView(RestauranteView.Resumo.class)
 	private CozinhaModel cozinha;

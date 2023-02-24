@@ -13,14 +13,14 @@ public class ValorZeroIncluiDescricaoValidator implements ConstraintValidator<Va
 	private String valorField;
 	private String descricaoField;
 	private String descricaoObrigatoria;
-
+	
 	@Override
 	public void initialize(ValorZeroIncluiDescricao constraint) {
 		this.valorField = constraint.valorField();
 		this.descricaoField = constraint.descricaoField();
 		this.descricaoObrigatoria = constraint.descricaoObrigatoria();
 	}
-
+	
 	@Override
 	public boolean isValid(Object objetoValidacao, ConstraintValidatorContext context) {
 		boolean valido = true;
@@ -37,11 +37,9 @@ public class ValorZeroIncluiDescricaoValidator implements ConstraintValidator<Va
 			}
 			
 			return valido;
-			
 		} catch (Exception e) {
 			throw new ValidationException(e);
 		}
-		
 	}
 
 }

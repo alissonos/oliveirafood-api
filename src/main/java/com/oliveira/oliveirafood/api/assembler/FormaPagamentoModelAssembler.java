@@ -14,17 +14,17 @@ import com.oliveira.oliveirafood.domain.model.FormaPagamento;
 @Component
 public class FormaPagamentoModelAssembler {
 
-    @Autowired
-    private ModelMapper modelMapper;
-    
-    public FormaPagamentoModel toModel(FormaPagamento formaPagamento) {
-        return modelMapper.map(formaPagamento, FormaPagamentoModel.class);
-    }
-    
-    public List<FormaPagamentoModel> toCollectionModel(Collection<FormaPagamento> formasPagamentos) {
-        return formasPagamentos.stream()
-                .map(formaPagamento -> toModel(formaPagamento))
-                .collect(Collectors.toList());
-    }
-    
+	@Autowired
+	private ModelMapper modelMapper;
+	
+	public FormaPagamentoModel toModel(FormaPagamento formaPagamento) {
+		return modelMapper.map(formaPagamento, FormaPagamentoModel.class);
+	}
+	
+	public List<FormaPagamentoModel> toCollectionModel(Collection<FormaPagamento> formasPagamentos) {
+		return formasPagamentos.stream()
+				.map(formaPagamento -> toModel(formaPagamento))
+				.collect(Collectors.toList());
+	}
+	
 }

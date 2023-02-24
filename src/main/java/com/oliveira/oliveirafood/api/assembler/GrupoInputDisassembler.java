@@ -10,14 +10,15 @@ import com.oliveira.oliveirafood.domain.model.Grupo;
 @Component
 public class GrupoInputDisassembler {
 
-    @Autowired
-    private ModelMapper modelMapper;
-    
-    public Grupo toDomainObject(GrupoInput grupoInput) {
-        return modelMapper.map(grupoInput, Grupo.class);
-    }
-    
-    public void copyToDomainObject(GrupoInput grupoInput, Grupo grupo) {
-        modelMapper.map(grupoInput, grupo);
-    }   
-}   
+	@Autowired
+	private ModelMapper modelMapper;
+	
+	public Grupo toDomainObject(GrupoInput grupoInput) {
+		return modelMapper.map(grupoInput, Grupo.class);
+	}
+	
+	public void copyToDomainObject(GrupoInput grupoInput, Grupo grupo) {
+		modelMapper.map(grupoInput, grupo);
+	}
+	
+}  

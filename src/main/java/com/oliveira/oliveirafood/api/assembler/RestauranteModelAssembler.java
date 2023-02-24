@@ -13,8 +13,8 @@ import com.oliveira.oliveirafood.domain.model.Restaurante;
 
 @Component
 public class RestauranteModelAssembler {
-	
-	@Autowired 
+
+	@Autowired
 	private ModelMapper modelMapper;
 	
 	public RestauranteModel toModel(Restaurante restaurante) {
@@ -26,4 +26,5 @@ public class RestauranteModelAssembler {
 				.map(restaurante -> toModel(restaurante))
 				.collect(Collectors.toList());
 	}
+	
 }

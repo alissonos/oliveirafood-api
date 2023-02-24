@@ -13,17 +13,17 @@ import com.oliveira.oliveirafood.domain.model.Estado;
 @Component
 public class EstadoModelAssembler {
 
-    @Autowired
-    private ModelMapper modelMapper;
-    
-    public EstadoModel toModel(Estado estado) {
-        return modelMapper.map(estado, EstadoModel.class);
-    }
-    
-    public List<EstadoModel> toCollectionModel(List<Estado> estados) {
-        return estados.stream()
-                .map(estado -> toModel(estado))
-                .collect(Collectors.toList());
-    }
-    
+	@Autowired
+	private ModelMapper modelMapper;
+	
+	public EstadoModel toModel(Estado estado) {
+		return modelMapper.map(estado, EstadoModel.class);
+	}
+	
+	public List<EstadoModel> toCollectionModel(List<Estado> estados) {
+		return estados.stream()
+				.map(estado -> toModel(estado))
+				.collect(Collectors.toList());
+	}
+	
 }
