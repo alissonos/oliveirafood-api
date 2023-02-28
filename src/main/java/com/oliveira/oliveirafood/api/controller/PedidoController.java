@@ -25,7 +25,9 @@ import com.oliveira.oliveirafood.domain.exception.NegocioException;
 import com.oliveira.oliveirafood.domain.model.Pedido;
 import com.oliveira.oliveirafood.domain.model.Usuario;
 import com.oliveira.oliveirafood.domain.repository.PedidoRepository;
+import com.oliveira.oliveirafood.domain.repository.filter.PedidoFilter;
 import com.oliveira.oliveirafood.domain.service.EmissaoPedidoService;
+import com.oliveira.oliveirafood.infraestructure.repository.spec.PedidoSpecs;
 
 @RestController
 @RequestMapping(value = "/pedidos")
@@ -47,8 +49,8 @@ public class PedidoController {
 	private PedidoInputDisassembler pedidoInputDisassembler;
 	
 	@GetMapping
-	public List<PedidoResumoModel> listar() {
-		List<Pedido> todosPedidos = pedidoRepository.findAll();
+	public List<PedidoResumoModel> pesquisar(PedidoFilter filtro) {
+		List<Pedido> todosPedidos = pedidoRepository.findAll(PedidoSpecs.usandoFiltro(filtro));
 		
 		return pedidoResumoModelAssembler.toCollectionModel(todosPedidos);
 	}
